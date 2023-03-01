@@ -17,15 +17,16 @@
   </head>
   <body>
     <div class="home">
-      <a href="#/">主页</a>
-      <a href="#/second">次页</a>
-      <a href="#/third">三页</a>
+      <button onclick="go('/')">go home</button>
+      <button onclick="go('/second')">go second</button>
+      <button onclick="go('/third')">go third</button>
     </div>
     <script src="./index.js"></script>
     <script>
       const el = document.querySelector('.home')
       // 初始化
-      new window.$Router({
+      const router = new window.$Router({
+        model: 'history', // hash,history
         routes: [
           {
             path: "/",
@@ -53,6 +54,10 @@
           },
         ],
       });
+      
+      function go(path) {
+        router.push(path)
+      }
     </script>
   </body>
 </html>
